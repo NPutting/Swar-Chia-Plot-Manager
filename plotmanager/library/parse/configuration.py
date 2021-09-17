@@ -25,7 +25,7 @@ def _get_chia_location(config):
 def _get_progress_settings(config):
     progress_setting = config['progress']
     expected_parameters = ['phase1_line_end', 'phase2_line_end', 'phase3_line_end', 'phase4_line_end', 'phase1_weight',
-                           'phase2_weight', 'phase3_weight', 'phase4_weight', ]
+                           'phase2_weight', 'phase3_weight', 'phase4_weight', 'header_lines' ]
     _check_parameters(parameter=progress_setting, expected_parameters=expected_parameters, parameter_type='progress')
     return progress_setting
 
