@@ -193,7 +193,8 @@ def get_progress(line_count, progress_settings, backend='chia'):
     phase3_weight = progress_settings['phase3_weight']
     phase4_weight = progress_settings['phase4_weight']
     header_lines  = progress_settings['header_lines']
-    
+
+    progress=0    
     line_count = line_count - header_lines
 
     if line_count > phase1_line_end:
