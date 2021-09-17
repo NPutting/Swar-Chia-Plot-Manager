@@ -22,7 +22,6 @@ def _get_row_info(pid, running_work, view_settings, as_raw_values=False, backend
 
     row = [
         work.job.name if work.job else '?',
-        work.k_size,
         plot_id_prefix,
         pid,
         work.datetime_start.strftime(view_settings['datetime_format']),
@@ -51,8 +50,7 @@ def pretty_print_bytes(size, size_type, significant_digits=2, suffix=''):
 
 def pretty_print_time(seconds, include_seconds=True):
     total_minutes, second = divmod(seconds, 60)
-    hour, minute = divmod(total_minutes, 60)
-    return f"{hour:02}:{minute:02}{f':{second:02}' if include_seconds else ''}"
+    return f"{total_minutes:02}{f':{second:02}' if include_seconds else ''}"
 
 
 def pretty_print_table(rows):
@@ -64,8 +62,8 @@ def pretty_print_table(rows):
                 continue
             max_characters[i] = length
 
-    headers = "   ".join([cell.center(max_characters[i]) for i, cell in enumerate(rows[0])])
-    separator = '=' * (sum(max_characters) + 3 * len(max_characters))
+    headers = " ".join([cell.center(max_characters[i]) for i, cell in enumerate(rows[0])])
+    separator = '=' * (sum(max_characters) + 1 * len(max_characters))
     console = [separator, headers, separator]
     for row in rows[1:]:
         console.append("   ".join([cell.ljust(max_characters[i]) for i, cell in enumerate(row)]))
@@ -98,7 +96,7 @@ def get_job_data(jobs, running_work, view_settings, as_json=False, backend='chia
 
 
 def pretty_print_job_data(job_data):
-    headers = ['num', 'job', 'k', 'plot_id', 'pid', 'start', 'elapsed_time', 'phase', 'phase_times', 'progress', 'temp_size']
+    headers = ['#', 'job', 'plot_id', 'pid', 'start', 'length', 'P', 'phase_times', '%', 'tmp']
     rows = [headers] + job_data
     return pretty_print_table(rows)
 
