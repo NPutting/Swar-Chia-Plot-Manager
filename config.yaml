@@ -1,0 +1,64 @@
+chia_location: /root/chia-plotter/build/chia_plot
+
+backend: madmax
+
+manager:
+  check_interval: 15
+  log_level: ERROR
+
+log:
+  folder_path: /root/logs/plots/
+
+view:
+  check_interval: 15
+  datetime_format: "%H:%M:%S"
+  include_seconds_for_phase: true
+  include_drive_info: true
+  include_cpu: true
+  include_ram: true
+  include_plot_stats: true
+
+instrumentation:
+  prometheus_enabled: true
+  prometheus_port: 9090
+
+progress:
+  header_lines: 17
+  phase1_line_end: 20
+  phase2_line_end: 34
+  phase3_line_end: 48
+  phase4_line_end: 53
+  phase1_weight: 55.3
+  phase2_weight: 18.2
+  phase3_weight: 23.9
+  phase4_weight: 2.6
+  
+global:
+  max_concurrent: 10
+  max_for_phase_1: 3
+  minimum_minutes_between_jobs: 0
+
+jobs:
+  - name: ram
+    max_plots: 9999
+    farmer_public_key: FARMERADDRESS
+    pool_contract_address: CONTRACTADDRESS
+    temporary_directory: /mnt/ram/
+    destination_directory: /root/final/
+    size: 32
+    bitfield: true
+    threads: 12
+    buckets: 256
+    buckets_p3: 256
+    memory_buffer: 6000
+    max_concurrent: 1
+    max_concurrent_with_start_early: 2
+    initial_delay_minutes: 0
+    stagger_minutes: 40
+    max_for_phase_1: 1
+    concurrency_start_early_phase: 5
+    concurrency_start_early_phase_delay: 0
+    temporary2_destination_sync: false
+    exclude_final_directory: false
+    skip_full_destinations: false
+    unix_process_priority: 10
