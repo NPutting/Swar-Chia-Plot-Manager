@@ -23,10 +23,10 @@ instrumentation:
   prometheus_port: 9090
 
 progress:
-  header_lines: 17
-  phase1_line_end: 20
-  phase2_line_end: 34
-  phase3_line_end: 48
+  header_lines: 8
+  phase1_line_end: 22
+  phase2_line_end: 36
+  phase3_line_end: 41
   phase4_line_end: 53
   phase1_weight: 55.3
   phase2_weight: 18.2
