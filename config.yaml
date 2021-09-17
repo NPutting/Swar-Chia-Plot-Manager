@@ -18,10 +18,6 @@ view:
   include_ram: true
   include_plot_stats: true
 
-notifications:
-  notify_discord: true
-  discord_webhook_url: https://discord.com/api/webhooks/841861361894293504/D8WN-hGSjV7cE-2bhiOgqAXlqcaDQgchd1_ryx5er0CYpzSgbyg-IpXqrvZc1yPKrfaF
-
 instrumentation:
   prometheus_enabled: true
   prometheus_port: 9090
