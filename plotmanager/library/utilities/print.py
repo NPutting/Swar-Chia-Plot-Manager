@@ -68,7 +68,7 @@ def pretty_print_table(rows):
     separator = '=' * (sum(max_characters) + 1 * len(max_characters))
     console = [separator, headers, separator]
     for row in rows[1:]:
-        console.append("   ".join([cell.ljust(max_characters[i]) for i, cell in enumerate(row)]))
+        console.append(" ".join([cell.ljust(max_characters[i]) for i, cell in enumerate(row)]))
     console.append(separator)
     return "\n".join(console)
 
